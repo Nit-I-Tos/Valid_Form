@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="main.css">
+    <title>Document</title>
+</head>
+<body>
+ <form id="form">
+    <label>Разработчики:</label><input type="text" id="razrab"><span id="razrabError"></span><br>
+    <label>Название сайта:</label><input type="text" id="site"><span id="siteNameErr"></span><br>
+    <label>Сайт url:</label><input type="text" id="siteUrl"><span id="siteUrlErr"></span><br>
+    <label>Дата запуска:</label><input type="date" id="date" value="2023-11-09" min="2023-11-01" max="2023-11-29"><span id="dateErr"></span><br>
+    <label>Посетителей в сутка:</label><input type="number" id="guests"><span id="guestsErr"></span><br>
+    <label>Mail для связи:</label><input type="text" id="email"><span id="connectErr"></span><br>
+    <label>Рубрика каталог:</label><select id="rubric">
+      <option value="1">Здоровье</option>
+      <option value="2">Быт</option>
+      <option value="3">Тлен</option>
+    </select><span id="rubricErr"></span><br>
+    <label>Размещение:</label>
+    <label>VIP</label><input type="radio" id="radioBtn" class="radioBtn">
+    <label>Очное</label><input type="radio" id="radioBtn" class="radioBtn">
+    <label>заочное</label><input type="radio" id="radioBtn" class="radioBtn"><span id="radioBtnErr"></span><br>
+    <label>Разрешить отзывы:</label><input type="checkbox" id="check" checked><span id="checkboxErr"></span><br>
+    <label>Описание сайта:</label><textarea id="comments"></textarea><span id="comentErr"></span><br>
+    <button class="subBtn">Опубликовать</button>
+  </form>
+    
+
+
+
+
+<script src="index.js"></script>
+</body>
+</html>
