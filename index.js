@@ -35,8 +35,8 @@ siteUrl.addEventListener('blur', ()=>siteUrlValid(false) )
 
 guests.addEventListener('blur', ()=>guestsValid(false) )
 connect.addEventListener('blur', ()=>connectValid(false))
-rubric.addEventListener('blur', ()=>rubricValid(false))
-checkbox.addEventListener('blur', ()=>checkboxValid(false))
+rubric.addEventListener('change', ()=>rubricValid(false))
+checkbox.addEventListener('change', ()=>checkboxValid(false))
 date.addEventListener('blur', ()=>dateValid(false))
 coment.addEventListener('blur', ()=>comentValid(false))
 
