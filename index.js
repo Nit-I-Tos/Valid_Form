@@ -18,13 +18,11 @@ let checkbox = document.getElementById('check');
 
 let rubric = document.getElementById('rubric');
 
-let radioBtn = document.getElementsByClassName('radioBtn');
-
 let coment = document.getElementById('comments');
 
 let span1 = document.getElementById('span1')
 
-const radioBtnErr = document.getElementById('radioBtnErr')
+
 
 
 form.addEventListener('submit', formSubmit)
@@ -117,7 +115,7 @@ function connectValid(focusOnErr) {
   if (connect.value === "") {
     connectErr.innerHTML = 'Заполните поле'
     errCount++
-  } else if(!/@$/.test(connect.value)) {
+  } else if(!/^(([^<>()[\].,;:\s@"]+(\.[^<>()[\].,;:\s@"]+)*)|(".+"))@(([^<>()[\].,;:\s@"]+\.)+[^<>()[\].,;:\s@"]{2,})$/iu.test(connect.value)) {
     connectErr.innerHTML = 'Должен присудствовать знак @'
     errCount++
   }else{
@@ -192,24 +190,72 @@ function comentValid(focusOnErr) {
   coment.focus()
   return errCount
 }
+let radioBtn1 = document.getElementById('radioBtn1');
+  let radioBtn2 = document.getElementById('radioBtn2');
+  let radioBtn3 = document.getElementById('radioBtn3');
+radioBtn1.addEventListener('change', ()=>radioBtnValid())
 
 function radioBtnValid(focusOnErr) {
   let errCount = 0;
-  
-  for(let i=0;i<radioBtn.length;i++){
-    radioBtn[i].addEventListener('change', ()=>radioBtnValid(false))
-    if(!radioBtn[i].checked){
-      radioBtnErr.innerHTML = 'Выберете форму'
-    errCount++
+  const radioBtnErr = document.getElementById('radioBtnErr')
+    if(radioBtn1.checked==true){
+      radioBtnErr.innerHTML = ''
+    
   }else{
-    radioBtnErr.innerHTML = ''
+    radioBtnErr.innerHTML = 'Выберете форму'
+    errCount++
   }
-  return errCount
+  if (focusOnErr && !(radioBtn1.checked==true)){
+    radioBtn1.focus()
   }
   
-  if (focusOnErr && (!radioBtn[i].checked))
-  radioBtn[i].focus(radioBtn[i])
-  return errCount
+  return errCount;
+}
+
+radioBtn2.addEventListener('change', ()=>radioBtnValid2())
+
+function radioBtnValid2(focusOnErr) {
+  let errCount = 0;
+  const radioBtnErr = document.getElementById('radioBtnErr')
+    if(radioBtn2.checked==true){
+      radioBtnErr.innerHTML = ''
+    
+  }else{
+    radioBtnErr.innerHTML = 'Выберете форму'
+    errCount++
+  }
+  if (focusOnErr && !(radioBtn2.checked==true)){
+    radioBtn2.focus()
+  }
+  
+  return errCount;
+}
+
+radioBtn3.addEventListener('change', ()=>radioBtnValid3())
+
+function radioBtnValid3(focusOnErr) {
+  let errCount = 0;
+  const radioBtnErr = document.getElementById('radioBtnErr')
+    if(radioBtn3.checked==true){
+      radioBtnErr.innerHTML = ''
+    
+  }else{
+    radioBtnErr.innerHTML = 'Выберете форму'
+    errCount++
+  }
+  if (focusOnErr && !(radioBtn3.checked==true)){
+    radioBtn3.focus()
+  }
+  
+  return errCount;
+}
+
+function radioBtnCount(){
+  let errCount=0
+  errCount+=radioBtnValid(false)+radioBtnValid2(false)+radioBtnValid3(false);
+  if(errCount<=2)
+  return errCount=0
+return errCount
 }
 
 function formSubmit(event) {
@@ -223,11 +269,10 @@ function formSubmit(event) {
   errCount += checkboxValid(!errCount)
   errCount += dateValid(!errCount)
   errCount += comentValid(!errCount)
-  errCount += radioBtnValid(!errCount)
+  errCount += radioBtnCount(!errCount)
 
 
 
   if (errCount)
     event.preventDefault()
 }
-console.log(radioBtn)
