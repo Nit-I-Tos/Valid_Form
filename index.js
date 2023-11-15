@@ -195,7 +195,7 @@ let radioBtn1 = document.getElementById('radioBtn1');
   let radioBtn3 = document.getElementById('radioBtn3');
 radioBtn1.addEventListener('change', ()=>radioBtnValid())
 
-function radioBtnValid(focusOnErr) {
+function radioBtnValid() {
   let errCount = 0;
   const radioBtnErr = document.getElementById('radioBtnErr')
     if(radioBtn1.checked==true){
@@ -205,16 +205,12 @@ function radioBtnValid(focusOnErr) {
     radioBtnErr.innerHTML = 'Выберете форму'
     errCount++
   }
-  if (focusOnErr && !(radioBtn1.checked==true)){
-    radioBtn1.focus()
-  }
-  
   return errCount;
 }
 
 radioBtn2.addEventListener('change', ()=>radioBtnValid2())
 
-function radioBtnValid2(focusOnErr) {
+function radioBtnValid2() {
   let errCount = 0;
   const radioBtnErr = document.getElementById('radioBtnErr')
     if(radioBtn2.checked==true){
@@ -224,16 +220,12 @@ function radioBtnValid2(focusOnErr) {
     radioBtnErr.innerHTML = 'Выберете форму'
     errCount++
   }
-  if (focusOnErr && !(radioBtn2.checked==true)){
-    radioBtn2.focus()
-  }
-  
   return errCount;
 }
 
 radioBtn3.addEventListener('change', ()=>radioBtnValid3())
 
-function radioBtnValid3(focusOnErr) {
+function radioBtnValid3() {
   let errCount = 0;
   const radioBtnErr = document.getElementById('radioBtnErr')
     if(radioBtn3.checked==true){
@@ -242,9 +234,6 @@ function radioBtnValid3(focusOnErr) {
   }else{
     radioBtnErr.innerHTML = 'Выберете форму'
     errCount++
-  }
-  if (focusOnErr && !(radioBtn3.checked==true)){
-    radioBtn3.focus()
   }
   
   return errCount;
@@ -255,6 +244,7 @@ function radioBtnCount(){
   errCount+=radioBtnValid(false)+radioBtnValid2(false)+radioBtnValid3(false);
   if(errCount<=2)
   return errCount=0
+radioBtn1.focus()
 return errCount
 }
 
