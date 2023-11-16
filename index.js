@@ -22,6 +22,8 @@ let coment = document.getElementById('comments');
 
 let span1 = document.getElementById('span1')
 
+const radioBtnErr = document.getElementById('radioBtnErr');
+
 
 
 
@@ -143,7 +145,7 @@ function rubricValid(focusOnErr) {
   return errCount
 }
 
-function checkboxValid(focusOnErr) {
+function checkboxValid() {
   let errCount = 0;
   const checkboxErr = document.getElementById('checkboxErr')
   if (!checkbox.checked) {
@@ -152,8 +154,6 @@ function checkboxValid(focusOnErr) {
   }else{
     checkboxErr.innerHTML = ''
   }
-  if (focusOnErr && (!checkbox.checked))
-  checkbox.focus()
   return errCount
 }
 
@@ -227,7 +227,6 @@ radioBtn3.addEventListener('change', ()=>radioBtnValid3())
 
 function radioBtnValid3() {
   let errCount = 0;
-  const radioBtnErr = document.getElementById('radioBtnErr')
     if(radioBtn3.checked==true){
       radioBtnErr.innerHTML = ''
     
@@ -242,9 +241,10 @@ function radioBtnValid3() {
 function radioBtnCount(){
   let errCount=0
   errCount+=radioBtnValid(false)+radioBtnValid2(false)+radioBtnValid3(false);
-  if(errCount<=2)
+  if(errCount<=2){
+    radioBtnErr.innerHTML=''
   return errCount=0
-radioBtn1.focus()
+  }
 return errCount
 }
 
